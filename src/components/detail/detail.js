@@ -2,54 +2,61 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import './detail.scss'
 
-function Detail(props){
+function Detail(){
 
 	const id = useParams().id;
 
-	const [comicDetail, setComicDetail] = useState([])
-	const [Creators, setCreators] = useState([])
-	const [Stories, setStories] = useState([])
-	const [Image, setImage] = useState({ cover: '/img/loading.gif', blur:'' })
+	const [Detail, setDetail] = useState({
+		title:  '',
+		creators: [],
+		stories:  [],
+		image: {
+			cover: '/img/loading.gif',
+			blur:''
+		}
+	})
 
 	useEffect(()=>{
         getComicDetail()
-        getCreator()
     }, [])
 
     const getComicDetail = async () => {
-        const data = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}?apikey=633832778b0cb7f4ef7d6ed45d9bd2c1`);
-        const comics = await data.json()
-        setComicDetail(comics.data.results[0])
-        setStories(comics.data.results[0].stories.items)
-        let coverImage = comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension;
-        setImage({
-        	cover: coverImage,
-        	blur:  coverImage
-        })
-    }
+        const generalData = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}?apikey=633832778b0cb7f4ef7d6ed45d9bd2c1`);
+        const comics = await generalData.json()
 
-    const getCreator = async () => {
-        const data = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}/creators?apikey=633832778b0cb7f4ef7d6ed45d9bd2c1`);
-        const dataJson = await data.json()
-        setCreators(dataJson.data.results)
+        const creatorData = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}/creators?apikey=633832778b0cb7f4ef7d6ed45d9bd2c1`);
+        const dataJson = await creatorData.json()
+
+        let coverImage = comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension;
+
+        setDetail({
+        	title: comics.data.results[0].title,
+        	creators: dataJson.data.results,
+        	stories: comics.data.results[0].stories.items,
+        	image: {
+	        	cover: coverImage,
+	        	blur:  coverImage
+	        }
+        })
+
     }
 
 	return(
 		<article className="detail">
 			<section  className="detail__cont--img">
 				<Link className="detail__navBack" to="/" >&lt;</Link>
-				<img src={Image.cover} alt="Article image" />
-				<span className="detail__blur" style={{backgroundImage: `url(${Image.blur})`}} ></span>
+				<img src={Detail.image.cover} alt="Article image" />
+				<span className="detail__blur" style={{backgroundImage: `url(${Detail.image.blur})`}} ></span>
 			</section>
 			<section className="detail__cont--data">
 				<div className="detail__top">
-					<h1>{comicDetail.title}</h1>
+					<h1>{Detail.title}</h1>
 				</div>
 				<div className="detail__bottom">
 					<h2>Creators</h2>
 					<ol>
 						{
-							Creators.map((creator)=>{
+							Detail.creators.map((creator)=>{
 								return (
 									<li key={creator.id} >{creator.fullName}</li>
 								)
@@ -60,7 +67,7 @@ function Detail(props){
 					<h2>Stories</h2>
 					<ol>
 						{
-							Stories.map((item, index)=>{
+							Detail.stories.map((item, index)=>{
 								return(
 									<li key={index} >{item.name}</li>
 								)
