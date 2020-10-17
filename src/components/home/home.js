@@ -42,9 +42,9 @@ function Home(){
 	            	{
 	            		Busy ? <Loading />
 	            		: comics.map((comic)=>{
-		                        return(
-		                            <ComicBox key={comic.id} id={comic.id} title={comic.title} img={comic.thumbnail} />
-		                        )
+	                        return(
+	                            <ComicBox key={comic.id} id={comic.id} title={comic.title} img={comic.thumbnail} />
+	                        )
 		                })
 	            	}
 
