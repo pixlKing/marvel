@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import './detail.scss'
 
 function Detail(props){
@@ -9,7 +9,7 @@ function Detail(props){
 	const [comicDetail, setComicDetail] = useState([])
 	const [Creators, setCreators] = useState([])
 	const [Stories, setStories] = useState([])
-	const [Image, setImage] = useState([])
+	const [Image, setImage] = useState({ cover: '/img/loading.gif', blur:'' })
 
 	useEffect(()=>{
         getComicDetail()
@@ -21,23 +21,24 @@ function Detail(props){
         const comics = await data.json()
         setComicDetail(comics.data.results[0])
         setStories(comics.data.results[0].stories.items)
-        setImage(comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension)
-        console.log(comics.data.results[0])
+        setImage({
+        	cover: comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension,
+        	blur:  comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension
+        })
     }
     const getCreator = async () => {
         const data = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}/creators?apikey=633832778b0cb7f4ef7d6ed45d9bd2c1`);
         const dataJson = await data.json()
         setCreators(dataJson.data.results)
-        //console.log(dataJson.data.results)
     }
 
 
 	return(
-		<div className="detail">
+		<article className="detail">
 			<section className="detail__cont--img">
-				<figure className="detail__cover">
-					<img src={Image} />
-				</figure>
+				<Link className="detail__navBack" to="/" >&lt;</Link>
+				<img src={Image.cover} alt="Article image" />
+				<span className="detail__blur" style={{backgroundImage: `url(${Image.blur})`}} ></span>
 			</section>
 			<section className="detail__cont--data">
 				<div className="detail__top">
@@ -67,7 +68,7 @@ function Detail(props){
 					</ol>
 				</div>
 			</section>
-		</div>
+		</article>
 	)
 }
 

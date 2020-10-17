@@ -1,16 +1,21 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
+import './footer.scss'
 
 function Footer(props){
+
+    const pages = [0,10,20,30,40,50];
+
 	return(
         <footer className="footer">
             <div className="footer__pager">
-                <span>&lt;</span>
-                <span className="active">1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>&gt;</span>
+                {
+                    pages.map((page, index)=>{
+                        return(
+                            <NavLink key={index} to={`/${page}`} activeClassName="active">{index+1 === pages.length ? '>' : index+1}</NavLink>
+                        )
+                    })
+                }
             </div>
         </footer>
 	)
