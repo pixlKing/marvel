@@ -13,4 +13,4 @@
 
 
 Este es un proyecto de prueba, desarrollado con React, consumiendo la api de Marvel para mostrar Comics.
-Tiene una vista de listado principal, a la cual se puede acceder clickeando en la misma parair a la vista de Detalle del Comic.
+Tiene una vista de listado principal, a la cual se puede acceder clickeando en la misma para ir a la vista de Detalle del Comic.
