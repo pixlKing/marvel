@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function ComicBox(props){
 
@@ -9,12 +10,11 @@ function ComicBox(props){
 		backgroundImage: `url(${image})`
 	}
 
-	 //`background-image: url(${image}) `;
-
 	return(
-		<article className="product" style={styles}>
-            <h1 className="product__title">{props.title}</h1>
-        </article>
+		<Link className="product" to={`/detail/${props.id}`} >
+			<figure className="product__imgArea" style={styles}></figure>
+			<h1 className="product__title">{props.title}</h1>
+        </Link>
 	)
 }
 

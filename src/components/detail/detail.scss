@@ -1,0 +1,74 @@
+@import '../../vars.scss';
+
+.detail {
+	display:flex;
+	height: 100vh;
+
+	.detail__cont--img {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		height: 100vh;
+		width: 50%;
+		.detail__cover {
+			margin: 0;
+			padding: 40px;
+
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+
+	.detail__cont--data {
+		display: flex;
+		flex-flow: column;
+		height: 100vh;
+		width: 50%;
+
+		.detail__top {
+			align-items: center;
+			background: $detail__top-bgColor;
+			display: flex;
+			height: 50vh;
+			justify-content: center;
+			text-transform: uppercase;
+			padding: 20px;
+			box-sizing: border-box;
+
+			h1 {
+				color: white;
+				font-weight: normal;
+				font-size: 4vh;
+				text-align: center;
+			}
+		}
+
+		.detail__bottom{
+			background: $white-dark;
+			height: 50vh;
+
+			h2 {
+				font-size: 20px;
+				font-weight: normal;
+				padding: 10px 10px;
+			}
+			ol {
+				margin: 0;
+				padding: 0;
+				li {
+					font-size: 20px;
+					list-style-position: inside;
+					padding: 10px 20px;
+
+					&:nth-child(odd){
+						background: $gray-lighten;
+					}
+					&:nth-child(even){
+						background: $gray-light;
+					}
+				}
+			}
+		}
+	}
+}

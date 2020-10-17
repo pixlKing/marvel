@@ -1,28 +1,4 @@
-/* Vars */
-/* Global Colors */
-$red:                       #c20927;
-$white:                     #fff;
-$gray-dark:                 #1e1e1e;
-
-/* Colors */
-$header-bgColor:            $red;
-$header__logo-color:        $white;
-
-$content-bgColor:           $gray-dark;
-
-$footer-bgColor:            $red;
-$pager-color:               $white;
-$pager__span-bg-color:      $gray-dark;
-
-/* Sizes */
-$footer__pager-fontSize:    17px;
-
-/* Animations */
-$animation-speed:           .5s;
-
-/* View ports */
-$vp-tablet:                 768px;
-$vp-mobile:                 500px;
+@import './vars.scss';
 
 
 /* Resets */
@@ -42,7 +18,7 @@ body {
     background: $header-bgColor;
     display: flex;
     justify-content: center;
-    margin: 0 0 9vh;
+    margin: 0;
     padding: 20px;
 
     .info{
@@ -68,23 +44,24 @@ body {
 .catalog {
     align-items: flex-start;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     max-width: 1500px;
-    margin: 0 auto;
-    flex-wrap: wrap;
+    margin:  9vh auto 0;
+    padding: 0 0 50px;
 
     .product {
-        background-size: cover;
-        box-sizing: border-box;
+        align-items: center;
         border-radius: 5px;
+        box-sizing: border-box;
+        display: flex;
         height: 27vw;
         margin: 0 1% 3%;
         max-height: 400px;
-        width: 18%;
-        display: flex;
-        align-items: center;
-        text-align: center;
+        position: relative;
         overflow: hidden;
+        text-align: center;
+        width: 18%;
         @media (max-width: $vp-tablet){
             height: 40vw;
             width: 30%;
@@ -103,12 +80,27 @@ body {
             justify-content: center;
             opacity: 0;
             padding: 15px 0;
+            position: relative;
             transition: opacity $animation-speed;
             width: 100%;
+            z-index: 1;
+        }
+        .product__imgArea {
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            transition: opacity $animation-speed;
+            z-index: 0;
         }
         &:hover {
             .product__title {
                 opacity: 1;
+            }
+            .product__imgArea {
+                opacity: .5;
             }
         }
     }

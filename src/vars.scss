@@ -1,0 +1,28 @@
+/* Vars */
+/* Global Colors */
+$red:                       #c20927;
+$white:                     #fff;
+$gray-dark:                 #1e1e1e;
+$gray:						#333333;
+$gray-light:				#e2e3e4;
+$gray-lighten:				#e8e9ea;
+$white-dark:                #edeeef;
+
+/* Colors */
+$header-bgColor:            $red;
+$header__logo-color:        $white;
+$content-bgColor:           $gray-dark;
+$footer-bgColor:            $red;
+$pager-color:               $white;
+$pager__span-bg-color:      $gray-dark;
+$detail__top-bgColor: 		$gray;
+
+/* Sizes */
+$footer__pager-fontSize:    17px;
+
+/* Animations */
+$animation-speed:           .5s;
+
+/* View ports */
+$vp-tablet:                 768px;
+$vp-mobile:                 500px;
