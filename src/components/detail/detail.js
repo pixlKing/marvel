@@ -21,21 +21,22 @@ function Detail(props){
         const comics = await data.json()
         setComicDetail(comics.data.results[0])
         setStories(comics.data.results[0].stories.items)
+        let coverImage = comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension;
         setImage({
-        	cover: comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension,
-        	blur:  comics.data.results[0].thumbnail.path+"."+comics.data.results[0].thumbnail.extension
+        	cover: coverImage,
+        	blur:  coverImage
         })
     }
+
     const getCreator = async () => {
         const data = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}/creators?apikey=633832778b0cb7f4ef7d6ed45d9bd2c1`);
         const dataJson = await data.json()
         setCreators(dataJson.data.results)
     }
 
-
 	return(
 		<article className="detail">
-			<section className="detail__cont--img">
+			<section  className="detail__cont--img">
 				<Link className="detail__navBack" to="/" >&lt;</Link>
 				<img src={Image.cover} alt="Article image" />
 				<span className="detail__blur" style={{backgroundImage: `url(${Image.blur})`}} ></span>

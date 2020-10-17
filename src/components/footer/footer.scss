@@ -2,22 +2,22 @@
 
 .footer {
     box-shadow: 0px 0px 10px $gray-dark;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
+    bottom:     0;
+    position:   fixed;
+    width:      100%;
+    z-index:    1;
 
     .footer__pager {
         background: $footer-bgColor;
-        color: $pager-color;
-        display: flex;
+        color:      $pager-color;
+        display:    flex;
         justify-content: center;
         text-align: center;
 
         a {
-            color: white;
-            font-size: $footer__pager-fontSize;
-            padding: 15px 16px;
+            color:      white;
+            font-size:  $footer__pager-fontSize;
+            padding:    15px 16px;
 
             &.active, &:hover {
                 background: $pager__span-bg-color;

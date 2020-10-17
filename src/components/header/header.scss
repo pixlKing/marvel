@@ -1,12 +1,12 @@
 @import '../../vars.scss';
 
 .header {
-    align-items: center;
-    background: $header-bgColor;
-    display: flex;
+    align-items:    center;
+    background:     $header-bgColor;
+    display:        flex;
     justify-content: center;
-    margin: 0;
-    padding: 20px;
+    margin:         0;
+    padding:        20px;
 
     .info{
         margin-right: auto;
@@ -14,13 +14,13 @@
 
     .header__logo {
         align-items: center;
-        color: $header__logo-color;
-        display: flex;
+        color:      $header__logo-color;
+        display:    flex;
         justify-content: center;
         margin-right: auto;
         span {
-            font-size: 21px;
-            padding-left: 5px;
+            font-size:      21px;
+            padding-left:   5px;
         }
     }
 }

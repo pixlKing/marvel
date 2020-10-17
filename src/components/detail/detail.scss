@@ -1,30 +1,33 @@
 @import '../../vars.scss';
 
+$detail-height:			100vh;
+$detail__mid-height:	50vh;
+
 .detail {
 	display:flex;
-	height: 100vh;
+	height: $detail-height;
 
 	.detail__cont--img {
 		align-items: center;
-		display: flex;
-		height: 100vh;
+		display: 	flex;
+		height: 	$detail-height;
 		justify-content: center;
-		position: relative;
-		overflow: hidden;
-		width: 50%;
+		position: 	relative;
+		overflow: 	hidden;
+		width: 		50%;
 
 		img {
-			border-radius: 10px;
-			box-shadow: 0 0 40px -10px black;
-			max-width: 100%;
-			transform: matrix3d(1, 0, 0, .0002, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-			z-index: 1;
+			border-radius: 	10px;
+			box-shadow: 	0 0 40px -10px black;
+			max-width: 		100%;
+			transform: 		matrix3d(1, 0, 0, .0002, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+			z-index: 		1;
 		}
 
 		.detail__blur {
 			filter: blur(16px);
 			bottom: 0;
-			top: 0;
+			top: 	0;
 			position: absolute;
 			width: 100%;
 			background-repeat: no-repeat;
@@ -35,7 +38,7 @@
 			font-size: 35px;
 			font-weight: bold;
 			left: 0;
-			padding: 0 10px;
+			padding: 	0 10px;
 			position: absolute;
 			text-shadow: 2px 3px 5px black;
 			top: 0;
@@ -45,25 +48,25 @@
 
 	.detail__cont--data {
 		box-shadow: 0 0 15px 15px black;
-		display: flex;
-		flex-flow: column;
-		height: 100vh;
-		width: 50%;
+		display: 	flex;
+		flex-flow: 	column;
+		height: 	$detail-height;
+		width: 		50%;
 
 		.detail__top {
-			align-items: center;
-			background: $detail__top-bgColor;
-			display: flex;
-			height: 50vh;
+			align-items: 	center;
+			background: 	$detail__top-bgColor;
+			display: 		flex;
+			height: 		$detail__mid-height;
 			justify-content: center;
 			text-transform: uppercase;
-			padding: 20px;
-			box-sizing: border-box;
+			padding: 		20px;
+			box-sizing: 	border-box;
 
 			h1 {
-				color: white;
+				color: 		 white;
 				font-weight: normal;
-				font-size: 5vh;
+				font-size: 	5vh;
 				text-align: center;
 				@media (max-width: $vp-tablet){
 					font-size: 4vh;
@@ -73,21 +76,21 @@
 
 		.detail__bottom{
 			background: $white-dark;
-			height: 50vh;
+			height: 	$detail__mid-height;
 			overflow-y: scroll;
 
 			h2 {
-				font-size: 20px;
+				font-size: 	20px;
 				font-weight: normal;
-				padding: 10px 10px;
+				padding: 	10px 10px;
 			}
 			ol {
 				margin: 0;
 				padding: 0;
 				li {
-					font-size: 20px;
+					font-size: 	20px;
 					list-style-position: inside;
-					padding: 10px 20px;
+					padding: 	10px 20px;
 
 					&:nth-child(odd){
 						background: $gray-lighten;

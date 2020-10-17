@@ -1,7 +1,8 @@
 import React from 'react'
+import './loading.scss'
 
 export default function Loading(){
 	return(
-		<img src="/img/loading.gif" />
+		<img className="loading" src="/img/loading.gif" alt="Loading" />
 	)
 }
